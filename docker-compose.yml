@@ -1,0 +1,15 @@
+services:
+  samba:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SAMBA_USER: youruser
+        SAMBA_PASSWORD: yourpassword
+    container_name: samba-server
+    ports:
+      - "139:139"
+      - "445:445"
+    volumes:
+      - /path/to/media:/mnt/mydisk/media
+    restart: unless-stopped
